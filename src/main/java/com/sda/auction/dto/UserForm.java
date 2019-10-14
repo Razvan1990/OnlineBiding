@@ -14,14 +14,14 @@ public class UserForm {
 	@NotEmpty(message = "{error.user.first.name.empty}")
 	private String firstName;
 
-	@NotEmpty(message = "Last name should not be empty")
+	@NotEmpty(message = "{error.user.last.name.empty}")
 	private String lastName;
 
-	@Email(message = "Must be a valid email")
-	@NotEmpty(message = "Email should not be empty")
+	@Email(message = "{error.user.email.mail}")
+	@NotEmpty(message = "{error.user.email.empty}")
 	private String email;
 
-	@Length(min = 4, message = "Password too short")
+	@Length(min = 4, message = "{error.user.password.length}")
 	private String password;
 	private String confirmPassword;
 }

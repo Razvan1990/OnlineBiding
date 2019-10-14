@@ -1,14 +1,23 @@
 package com.sda.auction.service.impl;
 
+import com.sda.auction.dto.ItemForm;
 import com.sda.auction.dto.UserForm;
 import com.sda.auction.mapper.UserMapper;
+import com.sda.auction.model.Item;
 import com.sda.auction.model.Role;
 import com.sda.auction.model.User;
 import com.sda.auction.repository.RoleRepository;
 import com.sda.auction.repository.UserRepository;
 import com.sda.auction.service.UserService;
+
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -36,9 +45,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void saveUser(UserForm userForm) {
 		User user = userMapper.map(userForm);
+		//a facut encode la parola luata de pe UserForm
 		encodePassword(userForm, user);
 		assignUserRoles(user);
+
+
 		makeUserActive(user);
+		//a salvat practic user in Repository, repository care comunica cu baza de date
 		userRepository.save(user);
 	}
 
@@ -64,6 +77,29 @@ public class UserServiceImpl implements UserService {
 		System.out.println("find by email");
 
 		return userRepository.findByEmail(email);
+	}
+
+
+
+	public String getAuthenticatedEmail(){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
+	}
+
+	@Override
+	public User getLoggedInUser() {
+		//practic iti returneaza userul logat, care ai nevoeie ptr bid
+		String userEmail = getAuthenticatedEmail();
+		return findByEmail(userEmail);
+	}
+
+	@Override
+	public boolean isLoggedUserAdmin() {
+		//aici vede daca e admin sau nu userul
+		//vezi metoda in clasa
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		return authorities.contains(new SimpleGrantedAuthority("ADMIN"));
 	}
 
 

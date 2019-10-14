@@ -18,7 +18,7 @@
 <div class="ItemPage">
 
     <h2>Item page</h2>
-    <form:form method="POST" action="item" modelAttribute="itemForm" id="myForm" onSubmit="return validations()"
+    <form:form method="POST" action="myItem" modelAttribute="itemForm" id="myForm" onSubmit="return validations()"
                enctype="multipart/form-data">
         <!--specifica cum sa fie codata data cand se da sumbit spre server -> practic se foloseste doar la POST -->
         <label for="name">Item name</label>

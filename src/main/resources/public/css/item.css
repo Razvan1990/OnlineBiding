@@ -1,0 +1,130 @@
+body{
+    background-image: url("/images/header-bidding-auction-ss-1920_uusz3n.gif");
+    text-align:center;
+}
+form{
+    display: inline-block;
+}
+.ItemPage
+
+{
+
+    background-color: #9c9c9c;
+    margin: auto;
+    width: 350px;
+    align-items: center;
+    color: #d12e2e;
+    border-radius: 15%;
+    border-color: black;
+    border-right: double;
+    border-left: double;
+    border-top: solid;
+    border-bottom: solid;
+    height: auto;
+
+}
+.normalItem{
+    color:blue;
+    font-size:13px;
+    display: block;
+    padding:2px;
+    margin:0,auto;
+    margin-top:20px;
+    width:250px;
+    text-align:center;
+}
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+    margin-left:0.5em;
+    padding-left: 20px;
+}
+input[type="number"]{
+    width:150px;
+    text-align:center;
+    display:inline-block;
+    margin-bottom:15px;
+}
+
+
+label{
+    text-align: center;
+    font-family: Comic Sans MS;
+    margin:0 auto;
+    width:250px;
+    color:#383434fc;
+
+}
+.ItemPage > h2 {
+    color:#602424;
+    font-size:12px;
+    font-family: Georgia;
+    text-align:center;
+    font-weight: lighter;
+    padding-top:15px;
+    padding-bottom: 20px;
+    border-radius:0px 0px 50% 50%;
+    transform: scale3d(3, 1.9, 3);
+}
+
+.ItemList >li{
+    display: inline-block;
+    color:black;
+    margin-bottom:25px;
+    margin:0 0 5px 0;
+}
+
+.ItemList >li >a {
+    color:lightblue;
+    text-decoration:none;
+    display: inline-block;
+    padding-right:20px;
+}
+.ItemList >li >a:hover{
+    color:red;
+    font-style: italic;
+    text-decoration:none;
+}
+
+.ItemPage [type="submit"]{
+    margin:0 auto;
+    width:100px;
+    color:black;
+    font-size:12px;
+    margin-top:auto;
+    background-color: lightgreen;
+    border-radius:50%;
+}
+.ItemPage [type="submit"]:hover{
+    background-color:yellow;
+    color:red;
+    font-style: italic;
+
+
+}
+.ItemList{
+    text-align:center;
+    text-align: center;
+    margin: 20px 0 20px 0px;
+    padding-left: 20px;
+
+}
+#description{
+    width:250px;
+    margin-bottom:-10px;
+    padding-bottom: 25px;
+}
+.error.p{
+    border:solid 10px red;
+    color:red;
+    font-size:10px;
+    font-family: Times New Roman;
+    margin:0,auto;
+    padding-top:5px;
+}
+

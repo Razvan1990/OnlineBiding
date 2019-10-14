@@ -1,8 +1,8 @@
-package com.sda.auction.service.impl;
+package com.sda.auction.service;
 
 import com.sda.auction.dto.BidForm;
 
 public interface BidService {
     
-    void save (BidForm bidForm);
+    void save (BidForm bidForm,String itemId);
 }

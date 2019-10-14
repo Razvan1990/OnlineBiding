@@ -42,6 +42,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
+		/**
+		 * se ofera autorizatii
+		 * 1.toti care inta / sunt permisi
+		 * 2.toti care intra pe /login sunt permisi
+		 * 3.toti care intra pe /registration sunt permisi
+		 * 4/ pe admin au voie sa intre doar cei care sunt admini
+		 * 5. pe /account /** intra doar cei care au autoritate de user
+		 * 6 daca logginul da eroare, te va duce pe pagina cu parametrul error=true
+		 * 7. ca succes te directioneaza pe /admin/newItem
+		 * 8.Verificare login se face dupa parola si email
+		 * 9.Logout se face pe pagina cu /logout
+		 */
 		http.
 				authorizeRequests()
 				.antMatchers("/").permitAll()
@@ -51,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/account/**").hasAuthority("USER").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/account/home")
+				.defaultSuccessUrl("/successfulLogin")
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.and().logout()
@@ -64,6 +76,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web
 				.ignoring()
-				.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+				/**practic permite toate folderele asociate
+				 * permite sa intre toate folderele asociate dupa (** -asta inseama stelutele)
+ 				 */
+				.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/template/**","/images**");
 	}
 }
